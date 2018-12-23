@@ -25,5 +25,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/getquery_result">Query result</a><br/>';
 		echo '<a href="/Products/getquery_result_row_session">Query result row session</a><br/>';
 		echo '<a href="/Products/getquery_result_row">Query result row</a><br/>';
+		echo '<a href="/Examform/">Take the test.</a><br/>';
 	}
 }
