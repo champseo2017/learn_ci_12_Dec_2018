@@ -26,5 +26,14 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/getquery_result_row_session">Query result row session</a><br/>';
 		echo '<a href="/Products/getquery_result_row">Query result row</a><br/>';
 		echo '<a href="/Examform/">Take the test.</a><br/>';
+		echo '<a href="/Products/insert_db">insert db v1 .</a><br/>';
+		echo '<a href="/Products/update_db">update db v1 .</a><br/>';
+		echo '<a href="/Products/delete_db">delete db v1 .</a><br/>';
+		echo '<a href="/Products/transv1">Transaction v1 .</a><br/>';
+		echo '<a href="/Products/trans_manual">trans_manual v2 .</a><br/>';
+		echo '<a href="/Products/query_bindingv1">query_bindingv1 v1 .</a><br/>';
+		echo '<a href="/Products/active_record_v1">active_record_v1 .</a><br/>';
+		echo '<a href="/Products/active_record_get_limit">active_record_get .</a><br/>';
+		echo '<a href="/Products/active_record_get_where">active_record_get_where .</a><br/>';
 	}
 }

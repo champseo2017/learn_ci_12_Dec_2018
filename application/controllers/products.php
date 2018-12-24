@@ -51,4 +51,122 @@ class Products extends CI_Controller {
         }
         echo '<button onclick="history.go(-1);">Back </button>';
     }
+    function insert_db(){
+       $sql = 'insert into products(code, name, price) values ("0004","Social Network Application Development", 290.00)';
+       if($this->db->query($sql)){
+           echo "เพิ่มรายการเรียบร้อย<br>";
+       }else{
+           echo "ไม่สามารถเพื่มรายการได้<br>";
+       }
+       echo '<button onclick="history.go(-1);">Back </button>';
+    }
+    function update_db(){
+        $sql = 'update products set code = "004" where id = 7';
+        if($this->db->query($sql)){
+            echo "ปรับปรุงรายการเรียบร้อย<br>";
+        }else{
+            echo "ไม่สามารถปรับปรุงรายการได้<br>";
+        }
+        echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function delete_db(){
+         $sql = 'delete from products where code = "004"';
+         if($this->db->query($sql))
+         {
+             echo "ลบรายการเรียบร้อย <br>";
+
+         }else{
+             echo "ไม่สามารถลบรายการได้ <br>";
+         }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function transv1 ()
+     {
+         $sql1 = 'insert into products (code, name, price) values ("005","Network development", 290.00)';
+         $sql2 = 'update products set price = 450.00 where code = "005"';
+         $this->db->trans_begin();
+         $this->db->query($sql1);
+         $this->db->query($sql2);
+         $this->db->trans_complete();
+         if($this->db->trans_status()) //Transaction เสร็จเรียบร้อย
+         {
+             echo "Transaction เสร็จเรียบร้อย <br>";
+         }else{
+             echo "Transaction เกิดข้อผิดพลาด <br>";
+         }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function trans_manual () {
+         $sql1 = 'insert into products (code, name, price) values ("006", "development", 500.00)';
+         $sql2 = 'update products set price = 900.00 where code = "006"';
+         $this->db->trans_begin();
+         $this->db->query($sql1);
+         $this->db->query($sql2);
+         if($this->db->trans_status())
+         {
+             $this->db->trans_commit();
+             echo 'Transaction เสร็จเรียบร้อยแล้ว <br>';
+
+         }else{
+             $this->db->trans_rollback();
+             echo "Transaction เกิดข้อผิดพลาด <br>";
+         }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function query_bindingv1 ()
+     {
+         $sql = 'insert into products(code, name, price) values (?,?,?)';
+         $array_query = array('007', 'Enterprise PHP Devlopment', 250.00);
+         if($this->db->query($sql,$array_query)){
+
+            echo "insert succes";
+
+         }else{
+             echo "insert not succes";
+         }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function active_record_v1 ()
+     {
+         $query = $this->db->select('code, name, price')
+                ->where('code', '005')
+                ->get('products')
+                ->result();
+        foreach($query as $row){
+            echo $row->code."<br>";
+            echo $row->name."<br>";
+            echo $row->price."<br>";
+        }
+        echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function active_record_get_limit ()
+     {
+         $query1 = $this->db->get('products') // select all
+                    ->result(); 
+         $query2 = $this->db->get('products', 5, 2) // select เรคจำนวนเรคคอน และ กำหนดเรคคอนเริ่มต้น
+                    ->result();
+        foreach($query2 as $row)
+        {
+            echo $row->code."<br>";
+            echo $row->name."<br>";
+            echo $row->price."<br>";
+
+        }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
+     function active_record_get_where()
+     {
+         // ฟงก์ชั่น get_where() เป็นฟังก์ชั่นที่ใช้ค้นหาหรือเลือกข้อมูลเหมือนกับ select เหมือนกับ ฟังก์ชั่น get()
+         // รูปแบบ $this->db->get_where($table,$where,$limit,$offset)
+         // แต่สำหรับฟังก์ชั่น get_where() เป็นการต้นหาหรือเลือกข้อมูลแบบมีเงื่อนไข
+         // $limit และ $offset หากไม่กำหนดจะเป็นการแสดงเรคอร์ดทั้งหมด
+
+         $cause = array('code'=>'005', 'name'=>'Network development');
+         $query = $this->db->get_where('products', $cause)->result();
+         foreach ($query as $value) {
+            echo $value->code."<br>";
+            echo $value->name."<br>";
+         }
+         echo '<button onclick="history.go(-1);">Back </button>';
+     }
 }
