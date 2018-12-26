@@ -169,4 +169,112 @@ class Products extends CI_Controller {
          }
          echo '<button onclick="history.go(-1);">Back </button>';
      }
+     function position_function ()
+     {
+         //ใน php การเขียนฟังก์ชั่นสามารถเขียนเอาไว้ตำแหน่งใดก็ได้ภายในเพจนั้น อาจเขียนเอาไว้ก่อนหรือหลังส่วนที่จะเรียกใช้ฟังก์ชั่นก็ได้
+         if($x <= 0){
+            show_error("กรุณาใส่ค่าที่มากกว่า 0");
+         }
+         function show_error($msg)
+         {
+             echo '<p style="color:red;">'. $msg . '</p><br/>';
+         }
+     }
+     function increment($input='')
+     {
+         //โดยปกติแล้วการส่งข้อมูลกลับจะต้องทำที่ส่วนท้ายสุดของฟังก์ชั่นหรือเป็นคำสั่งสุดท้ายของฟังก์ชั่น
+         $input++;
+         return $input;
+         echo "End of function<br/>"; //คำสั่งนี้ไม่มีผล
+
+     }
+     function get_microtime ()
+     {
+         $mt = explode(" ", microtime());
+         $time = $mt[0] + $mt[1];
+         return $time;
+        
+     }
+     function clu_microtime ()
+     {
+        $time_start = $this->get_microtime();
+        $go_on = true;
+        while ($go_on)
+        {
+            $rand = rand();
+            if($rand == 9999)
+            {
+                $go_on = false;
+            }
+            
+        }
+        $time_end = $this->get_microtime();
+        $difftime = $time_end - $time_start;
+        $time = round($difftime, 4);
+        echo "ใช้เวลาในการสุ่ม $time วินาที เพื่อให้ได้ 9999";
+
+     }
+     function pass_date ()
+     {
+        date_default_timezone_set('Asia/Bangkok');
+        $datetime_compare = "2018/07/20 12:00";
+        echo "วันเวลาปัจจุบัน :" .date('Y/m/d H:i') . "<br>";
+        echo "วันเวลาที่โพสต์ :" .$datetime_compare ."&raquo";
+        echo "<span>" .$this->datetime_ago($datetime_compare) ."</span>";
+     }
+     function datetime_ago($datetime_string)
+     {
+        date_default_timezone_set('Asia/Bangkok');
+        $ts = strtotime($datetime_string);
+        $now = strtotime('now');
+        if( !$ts || $ts > $now ) { return false; }
+        
+        $diff = $now - $ts;
+
+        $second = 1;
+        $minute = 60 * $second;
+        $hour = 60 * $minute;
+        $day = 24 * $hour;
+        $yesterday = 48 * $hour;
+        $month = 30 * $day;
+        $year = 365 * $day;
+        $ago = "";
+
+        if($diff >= $year)
+        {
+            $ago = round($diff/$year) . "ปี ที่แล้ว";
+
+        }
+        else if($diff >= $month)
+        {
+            $ago = round($diff/$month) . "เดือน ที่แล้ว";
+        }
+        else if($diff > $yesterday)
+        {
+            $ago = intval($diff/$day) . "วันที่แล้ว";
+        }
+        else if($diff <= $yesterday && $diff > $day)
+        {
+            $ago = " เมื่อวานนี้";
+        }
+        else if ($diff >= $hour)
+        {
+            $ago = intval($diff/$hour) . " ชั่วโมง ที่แล้ว";
+        }
+        else if($diff >= $minute)
+        {
+            $ago = intval($diff/$minute) . " นาที ที่แล้ว";
+        }
+        else if ($diff >= 5*$second)
+        {
+            $ago = intval($diff/$second) . " วินาที ที่แล้ว";
+        }
+        else {
+            $ago = "เมื่อสักครู่";
+        }
+        return $ago;
+        
+     }
+   
+     
 }

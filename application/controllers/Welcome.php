@@ -35,5 +35,9 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/active_record_v1">active_record_v1 .</a><br/>';
 		echo '<a href="/Products/active_record_get_limit">active_record_get .</a><br/>';
 		echo '<a href="/Products/active_record_get_where">active_record_get_where .</a><br/>';
+		echo '<a href="/Products/position_function">position_function .</a><br/>';
+		echo '<a href="/Products/increment/1">increment .</a><br/>';
+		echo '<a href="/Products/clu_microtime">clu_microtime .</a><br/>';
+		echo '<a href="/Products/pass_date">pass_date .</a><br/>';
 	}
 }
