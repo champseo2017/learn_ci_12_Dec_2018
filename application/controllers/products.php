@@ -275,6 +275,27 @@ class Products extends CI_Controller {
         return $ago;
         
      }
-   
-     
+     function load_jquery_ajex ()
+     {
+         for($i=1; $i<=10; $i++)
+         {
+             echo $i."<br>";
+
+         }
+     }
+     function method_ajax ()
+     {
+         for ($i=1; $i<=10; $i++)
+         {
+             echo $i."<br>";
+         }
+     }
+     function method_post_ajax ()
+     {
+         $data_text_box1 = $_POST["myData"];
+         $sum = floatval($data_text_box1[0]["text1"]) + floatval($data_text_box1[0]["text2"]);
+         echo $sum;
+        
+     }
+  
 }

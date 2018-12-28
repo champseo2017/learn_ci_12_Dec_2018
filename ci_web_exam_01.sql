@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2018 at 02:07 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Dec 28, 2018 at 07:35 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci_web_v1`
+-- Database: `ci_web_exam_01`
 --
 
 -- --------------------------------------------------------
@@ -265,7 +265,63 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `code`, `name`, `price`) VALUES
 (4, '001', 'CodeIgniter 2.0 Web Application Development', 150.00),
 (5, '002', 'Facebook Graph Development', 250.00),
-(6, '003', 'ExtJS: Rich Internet Application Development', 290.00);
+(6, '003', 'ExtJS: Rich Internet Application Development', 290.00),
+(8, '0004', 'Social Network Application Development', 290.00),
+(9, '005', 'Network development', 450.00),
+(10, '006', 'development', 900.00),
+(11, '007', 'Enterprise PHP Devlopment', 250.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `role` enum('Admin','Editor','Author') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin', '123456', 'Admin'),
+(2, 'editor', '123456', 'Editor'),
+(3, 'author', '123456', 'Author');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `uname` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `password_confirmation` varchar(100) DEFAULT NULL,
+  `ip` varchar(255) NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `uname`, `first_name`, `last_name`, `email`, `password`, `password_confirmation`, `ip`, `reg_date`) VALUES
+(1, 'boomgt', 'champ', 'goomhrt', 'noomgt@gmail.com', '123456789', '123456789', '127.0.0.1', '2018-12-28 17:01:27'),
+(2, 'boomgthi', 'hoomgt', 'koomgrt', 'seo.boomgeet@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '2018-12-28 17:07:36'),
+(3, 'hoomgty', 'lopmhty', 'hoomgtuip', 'fefefefefe@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '2018-12-28 17:40:46'),
+(4, 'gggggggg', 'nnnnnnn', 'kkkkkkk', 'vvvvv@gmail.com', 'e807f1fcf82d132f9bb018ca6738a19f', 'e807f1fcf82d132f9bb018ca6738a19f', '127.0.0.1', '2018-12-28 18:15:15'),
+(5, 'lopolooo', 'mkiuoom', 'poiujuuj', 'fefzzzz@gmail.com', 'e807f1fcf82d132f9bb018ca6738a19f', 'e807f1fcf82d132f9bb018ca6738a19f', '127.0.0.1', '2018-12-28 18:18:55'),
+(6, 'vwvve', 'vevev', 'veveve', 'noomfrr@gmail.com', 'e807f1fcf82d132f9bb018ca6738a19f', 'e807f1fcf82d132f9bb018ca6738a19f', '127.0.0.1', '2018-12-28 18:22:38');
 
 --
 -- Indexes for dumped tables
@@ -314,6 +370,18 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -357,7 +425,19 @@ ALTER TABLE `mst_user`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

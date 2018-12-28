@@ -39,5 +39,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/increment/1">increment .</a><br/>';
 		echo '<a href="/Products/clu_microtime">clu_microtime .</a><br/>';
 		echo '<a href="/Products/pass_date">pass_date .</a><br/>';
+		echo '<a href="/Products/script_in_controller">script_in_controller .</a><br/>';
 	}
 }
