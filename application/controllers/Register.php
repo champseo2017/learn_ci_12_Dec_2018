@@ -49,8 +49,6 @@ class Register extends CI_Controller
 
         if($this->form_validation->run() == FALSE)
         {
-            
-            $this->load->helper('url');
             $this->load->view('header/header');
             $this->load->view('reg');
             $this->load->view('footer/footer');
