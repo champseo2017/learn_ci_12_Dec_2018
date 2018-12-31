@@ -50,7 +50,7 @@ tr:nth-child(even) {
     <td><?php echo $data_selects['code']; ?></td>
     <td><?php echo $data_selects['name']; ?></td>
     <td><?php echo $data_selects['price']; ?></td>
-    <td><a href="book/select_update_book/<?php echo $data_selects['id']; ?>" id="edit">Edit</a></td>
+    <td><a href="javascript:void(0);" onclick="edit_book(<?php echo $data_selects['id']; ?>)">Edit</a></td>
     <td><a href="javascript:void(0);" onclick="delete_book(<?php echo $data_selects['id']; ?>)">Delete</a></td>
   </tr>
   <?php } ?>
@@ -59,6 +59,10 @@ tr:nth-child(even) {
 
 <script type="text/javascript">
     var url="<?php echo base_url();?>";
+    function edit_book(id){
+      event.preventDefault()
+          window.location = url+"book/select_update_book/"+id;
+        } 
     function delete_book(id){
        var r=confirm("Do you want to delete this?")
         if (r==true)

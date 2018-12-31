@@ -5,7 +5,7 @@ class Book_models extends CI_Model {
     }
     function _getUsers()
     {
-        $result = $this->db->order_by("code", "asc");
+        $result = $this->db->order_by("id", "asc");
         $result = $this->db->get('products');
         return $result->result_array();
     }
