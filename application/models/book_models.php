@@ -37,4 +37,32 @@ class Book_models extends CI_Model {
                   ->delete('products'); 
         return $delete;
     }
+    function ajax_book_get ($data)
+    {
+        $code = $data[0]['code'];
+        $name = $data[0]['name'];
+        $price = $data[0]['price'];
+       
+        $data_array = array(
+            'code' => $code,
+            'name' => $name,
+            'price' => $price
+         );
+         
+         $result = $this->db->insert('products',$data_array);
+         $result = $this->db->insert_id();
+         $re = $this->result_id_max($result);
+         return $re;
+    }
+    function result_id_max ($result)
+    {
+        $query = $this->db->select('*')
+                ->where('id', $result)
+                ->get('products')
+                ->result_array();
+        echo '<div class="alert alert-success" role="alert">'
+                .'<strong>'.'<span>Your insert data : </span>'.'<span>Code: </span>'.$query[0]['code'].'<span> Name: </span>'.$query[0]['name'].'<span> Price: </span>'.$query[0]['price'].'</strong>'.
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button></div>';
+    }
 }

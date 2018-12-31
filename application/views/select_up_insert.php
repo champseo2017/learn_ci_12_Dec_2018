@@ -26,14 +26,35 @@ tr:nth-child(even) {
 <body>
 <?php if($this->session->flashdata('UpdateSucess')) { ?>
 <div class="alert alert-success" role="alert">
-<?php echo $this->session->flashdata('UpdateSucess') ?>
+<strong><?php echo $this->session->flashdata('UpdateSucess') ?></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <?php } ?>
 <?php if($this->session->flashdata('DeleteSucess')) { ?>
 <div class="alert alert-success" role="alert">
-<?php echo $this->session->flashdata('DeleteSucess') ?>
+<strong><?php echo $this->session->flashdata('DeleteSucess') ?></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <?php } ?>
+้<h2>เพิ่มข้อมูล</h2>
+<div>
+
+Code : <input type="text" id="code" name="code"> 
+Name : <input type="text" id="name" name="name">
+Price : <input type="text" id="price" name="price">
+<button id="btn_insert_val">Insert</button>
+
+</div><br/>
+<div id="insert_sucess">
+</div>
+<div id="insert_sucess_data">
+</div><br>
+<div id="time">
+</div>
 <h2>HTML Table</h2>
 <table>
   <tr>
@@ -56,6 +77,10 @@ tr:nth-child(even) {
   <?php } ?>
 </table> 
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 <script type="text/javascript">
     var url="<?php echo base_url();?>";
@@ -70,6 +95,40 @@ tr:nth-child(even) {
         else
           return false;
         } 
+$( document ).ready(function() {
+  $("#btn_insert_val").click(function(){
+		var senddata = [{
+    	code: $("#code").val(),
+    	name: $("#name").val(), 
+      price: $("#price").val(), 
+  		}];
+		$.ajax({
+			method: "POST",
+			data: {myData: senddata},
+			url: "book/get_ajax_book",
+		})
+		.done(add)
+		.fail(function(){
+			alert("OH NO! FAILED");
+		});
+	});
+	function add (data)
+	{
+      $('#insert_sucess').html('<div class="alert alert-success" role="alert">' + '<strong>Insert Sucess</strong>' 
+      + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span></button></div>');
+      $('#insert_sucess_data').html(data);
+    $(window).ready( function() {
+      var time = 20
+      setInterval( function() {
+       time--;
+       $('#time').html('<span>รีเฟรชข้อมูลในอีก : </span>' + time + '<span> วินาที</span>');
+       if (time === 0) {
+        window.location.reload(1);
+       }    
+   }, 1000);
+  });
+	}
+});
 </script>
 </body>
 </html>

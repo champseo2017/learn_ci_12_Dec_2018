@@ -47,4 +47,9 @@ class Book extends CI_Controller {
             echo "Delete fail";
         }
     }
+    public function get_ajax_book ()
+    {
+        $data = $_POST['myData'];
+        $last_id = $this->book->ajax_book_get($data); 
+    }
 }
