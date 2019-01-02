@@ -96,8 +96,43 @@
     <script type="text/javascript" src="<?php echo base_url('assets/js/theme-script.js')  ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/raw/js/custome.js')  ?>"></script>
 <script>
-$( document ).ready(function() {
-    console.log( "ready!" );
+$(document).ready(function() {
+    
+   
+    $("#ulogin").click(function(event){
+        event.preventDefault();
+        var user_name = $("#inputUname").val();
+    	var password = $("#inputPassword").val();
+        $.ajaxSetup({
+        beforeSend:function(jqXHR, Obj){
+            var value = "; " + document.cookie;
+            var parts = value.split("; csrf_cookie_name=");
+            if(parts.length == 2)   
+            Obj.data += '&csrf_token='+parts.pop().split(";").shift();
+        }
+        });
+		$.ajax({
+		    method: "POST",
+            url: "login/userLogin",
+            datatype:'json',
+			data: {uname:user_name,pwd:password},
+		})
+		.done(sucess)
+		.fail(function(xhr, textStatus, errorThrown){
+			console.log(xhr.responseText);
+		});
+    });
+    function sucess (data)
+    {
+      if(data === "sucess"){
+        window.location.href="<?php echo base_url() ?>";
+      }else if(data === "failed") {
+          $("#error").html("<div class='alert alert-warning'>worng credential</div>");
+      }else if(data === "blank")
+      {
+          $("#error").html("<div class='alert alert-warning'>all fiealds are mandatory</div>");
+      }
+    }
 });
 </script>
 </body>

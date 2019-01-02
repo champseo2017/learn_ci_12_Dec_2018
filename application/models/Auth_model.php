@@ -22,7 +22,7 @@ class Auth_model extends CI_Model {
         if ($query->num_rows())
         {
             $row = $query->row_array();
-            if(sha1($password) == $row['password']){
+            if(md5($password) == $row['password']){
                 // we not need password to store in session
                 unset($row['password']);
                 $this->_data = $row;

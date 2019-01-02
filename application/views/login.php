@@ -14,11 +14,13 @@
      <div class="alert alert-success"><?php echo $this->session->flashdata('signupSucess') ?></div>
         
     <?php } ?>
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+    
+      <input type="text" id="inputUname" class="fadeIn second" name="inputUname" placeholder="Username">
+      <input type="password" id="inputPassword" class="fadeIn third" name="inputPassword" placeholder="Password">
+      <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />	
+      <div id="error"></div>
+      <input type="submit" id="ulogin" class="fadeIn fourth" value="Log In">
+    
     
     <!-- Remind Passowrd -->
     <div id="formFooter">

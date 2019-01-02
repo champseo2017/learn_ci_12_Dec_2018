@@ -70,7 +70,10 @@
                                         <?php } ?> 
 			    					</div>
 			    				</div>
-			    			</div>			    			
+                                <input type="hidden" id="is_new_customer" name="is_new_customer" value="1">
+                                <input type="hidden" id="email_create" name="email_create" value="1">
+			    			</div>	
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name() ?>" value="<?php echo $this->security->get_csrf_hash() ?>">		    			
 			    			<input type="submit" value="Register" class="btn btn-info btn-block">
                         <?php echo form_close(); ?>
 			    	</div>

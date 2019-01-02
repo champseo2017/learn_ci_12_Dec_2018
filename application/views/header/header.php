@@ -53,7 +53,12 @@
                           </div>
                       </div>
                       <div class="top-control">
+                          <?php if($this->session->userdata('uname')) { ?>
+                            <span><a>Welcome: <?php echo $this->session->userdata('uname') ?> </a></span>
+                            <a href="<?php echo base_url('login/logout') ?>">Logout</a>
+                          <?php } else { ?>
                           <a href="">Track Order</a><span>•</span><a href="<?php echo base_url('register') ?>">Register</a><span>•</span><a href="<?php echo base_url('login') ?>">Login</a>
+                          <?php } ?>
                       </div>
                       <div class="clearfix"></div>
                       <div class="top-offers show-mobile">

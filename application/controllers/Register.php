@@ -9,24 +9,24 @@ class Register extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-
     }
-    
     public function index()
     {
-        
         $this->load->view('header/header');
         $this->load->view('reg');
         $this->load->view('footer/footer');
     }
     public function signup()
     {
+        // print_r($this->input->post()); exit();
         $uname = $this->input->post('uname');
         $first_name = $this->input->post('first_name');
         $last_name = $this->input->post('last_name');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         $password_confirmation = $this->input->post('password_confirmation');
+        $is_new_customer = $this->input->post('is_new_customer');
+        $email_create = $this->input->post('email_create');
 
         $this->form_validation->set_rules('uname','uname','required|is_unique[users.uname]|min_length[4]',
         array('required' => 'You have not provided Username', 'is_unique' => 'This %s already exists.', 'min_length' => 'user ห้ามต่ำกว่า 4 ตัวอักษร')
@@ -54,10 +54,8 @@ class Register extends CI_Controller
             $this->load->view('footer/footer');
 
         }else{
-
             $this->load->model('Register_model');
             $data = [
-
                 'uname' => $uname,
                 'first_name' => $first_name,
                 'last_name' => $last_name,
@@ -65,13 +63,14 @@ class Register extends CI_Controller
                 'password' => MD5($password),
                 'password_confirmation' =>  MD5($password_confirmation),
                 'ip' => $this->input->ip_address(),
+                'is_new_customer' => $is_new_customer,
+                'email_create' => $email_create,
             ];
             $last_id = $this->Register_model->signupData($data);
             if($last_id)
             {
                 $this->session->set_flashdata('signupSucess', 'You have sucessfully Register Please login');
                 redirect('login');
-
             }
 
         }
