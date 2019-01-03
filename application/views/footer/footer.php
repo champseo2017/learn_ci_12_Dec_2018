@@ -133,6 +133,20 @@ $(document).ready(function() {
           $("#error").html("<div class='alert alert-warning'>all fiealds are mandatory</div>");
       }
     }
+
+    $(".owl-carousel").owlCarousel({
+    loop: true,
+    pagination: false,
+    autoPlay: true,
+    autoplayTimeout: 2500,
+    slideSpeed : 2500,
+    singleItem: true,
+    nav: false,
+    });
+
+  
+
+
 });
 </script>
 </body>
