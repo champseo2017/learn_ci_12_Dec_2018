@@ -104,16 +104,28 @@
                                   <li role="presentation">
                                       <a href="#3" role="tab" id="cat-3" data-toggle="tab" aria-controls="3">Best Seller</a>
                                   </li>
+                                  <li role="presentation">
+                                      <a href="#4" role="tab" id="cat-4" data-toggle="tab" aria-controls="4">Latest Products</a>
+                                  </li>
                               </ul>
                               
                               
                               <div id="myTabContent" class="tab-content">
                                   <div role="tabpanel" class="tab-pane fade in active" id="1" aria-labelledby="cat-1">
                                       <div class="row clearfix">
-                                      <?php foreach($FeaturePro_1 as $featureProduct)  { ?> 
+                                      <?php foreach($sub_feature_brogue_shoes as $featureProduct)  { ?> 
+                                        <?php
+                                        $prodAddDate = $featureProduct['product_time'];
+                                        $proTime = strtotime($prodAddDate);
+                                        $proDate = date('d-m-Y',$proTime);
+                                        $today = date('d-m-Y');
+                                        ?>
                                           <div class="col-md-3 prdct-grid">
                                               <div class="product-fade">
 													<div class="product-fade-wrap">
+                                                    <?php if($proDate == $today) { ?>
+                                                    <span>Product New</span>
+                                                    <?php } ?>
                                                         <div id="product-image" class="owl-carousel owl-theme">
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_1'] ?>" alt="" class="img-responsive"></div>
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_2'] ?>" alt="" class="img-responsive"></div>
@@ -121,6 +133,7 @@
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_4'] ?>" alt="" class="img-responsive"></div>
                                                         </div>
 														<div class="product-fade-ct">
+                                                            
                                                             <div class="product-fade-control">
                                                                 <div class="to-left">
                                                                     <a href=""><i class="fa fa-heart"></i></a>
@@ -144,7 +157,7 @@
                                               </div>
                                               
                                               <div class="product-name">
-                                                  <a href="<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
+                                                  <a href="<?php echo base_url('product/productDetails/')?>?pid=<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
                                               </div>
                                               <div class="star-1"></div>
                                               <div class="product-price">
@@ -157,10 +170,19 @@
                                   
                                   <div role="tabpanel" class="tab-pane fade" id="2" aria-labelledby="cat-2">
                                      <div class="row clearfix">
-                                      <?php foreach($FeaturePro_2 as $featureProduct)  { ?> 
+                                      <?php foreach($sub_feature_toe_cap as $featureProduct)  { ?> 
+                                        <?php
+                                        $prodAddDate = $featureProduct['product_time'];
+                                        $proTime = strtotime($prodAddDate);
+                                        $proDate = date('d-m-Y',$proTime);
+                                        $today = date('d-m-Y');
+                                        ?>
                                           <div class="col-md-3 prdct-grid">
                                               <div class="product-fade">
 													<div class="product-fade-wrap">
+                                                    <?php if($proDate == $today) { ?>
+                                                    <span>Product New</span>
+                                                    <?php } ?>
                                                         <div id="product-image" class="owl-carousel owl-theme">
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_1'] ?>" alt="" class="img-responsive"></div>
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_2'] ?>" alt="" class="img-responsive"></div>
@@ -191,7 +213,7 @@
                                               </div>
                                               
                                               <div class="product-name">
-                                                  <a href="<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
+                                                  <a href="<?php echo base_url('product/productDetails/')?>?pid=<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
                                               </div>
                                               <div class="star-1"></div>
                                               <div class="product-price">
@@ -204,10 +226,19 @@
                                   
                                   <div role="tabpanel" class="tab-pane fade" id="3" aria-labelledby="cat-3">
                                   <div class="row clearfix">
-                                      <?php foreach($FeaturePro_3 as $featureProduct)  { ?> 
+                                      <?php foreach($sub_feature_monk_shoes as $featureProduct)  { ?> 
+                                        <?php
+                                        $prodAddDate = $featureProduct['product_time'];
+                                        $proTime = strtotime($prodAddDate);
+                                        $proDate = date('d-m-Y',$proTime);
+                                        $today = date('d-m-Y');
+                                        ?>
                                           <div class="col-md-3 prdct-grid">
                                               <div class="product-fade">
 													<div class="product-fade-wrap">
+                                                    <?php if($proDate == $today) { ?>
+                                                    <span>Product New</span>
+                                                    <?php } ?>
                                                         <div id="product-image" class="owl-carousel owl-theme">
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_1'] ?>" alt="" class="img-responsive"></div>
                                                             <div class="item"><img src="<?php echo base_url()?><?php echo $featureProduct['product_image_2'] ?>" alt="" class="img-responsive"></div>
@@ -238,7 +269,7 @@
                                               </div>
                                               
                                               <div class="product-name">
-                                                  <a href="<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
+                                                  <a href="<?php echo base_url('product/productDetails/')?>?pid=<?php echo $featureProduct['product_id'] ?>"><?php echo $featureProduct['product_name'] ?></a>
                                               </div>
                                               <div class="star-1"></div>
                                               <div class="product-price">
@@ -248,7 +279,61 @@
                                       <?php } ?>
                                       </div>
                                   </div>
-                                  
+                                  <div role="tabpanel" class="tab-pane fade" id="4" aria-labelledby="cat-4">
+                                      <div class="row clearfix">
+                                      <?php foreach($sub_latest_product_home as $latest_product)  { ?> 
+                                        <?php
+                                        $prodAddDate = $latest_product['product_time'];
+                                        $proTime = strtotime($prodAddDate);
+                                        $proDate = date('d-m-Y',$proTime);
+                                        $today = date('d-m-Y');
+                                        ?>
+                                          <div class="col-md-3 prdct-grid">
+                                              <div class="product-fade">
+													<div class="product-fade-wrap">
+                                                    <?php if($proDate == $today) { ?>
+                                                    <span>Product New</span>
+                                                    <?php } ?>
+                                                        <div id="product-image" class="owl-carousel owl-theme">
+                                                            <div class="item"><img src="<?php echo base_url()?><?php echo $latest_product['product_image_1'] ?>" alt="" class="img-responsive"></div>
+                                                            <div class="item"><img src="<?php echo base_url()?><?php echo $latest_product['product_image_2'] ?>" alt="" class="img-responsive"></div>
+                                                            <div class="item"><img src="<?php echo base_url()?><?php echo $latest_product['product_image_3'] ?>" alt="" class="img-responsive"></div>
+                                                            <div class="item"><img src="<?php echo base_url()?><?php echo $latest_product['product_image_4'] ?>" alt="" class="img-responsive"></div>
+                                                        </div>
+														<div class="product-fade-ct">
+                                                            <div class="product-fade-control">
+                                                                <div class="to-left">
+                                                                    <a href=""><i class="fa fa-heart"></i></a>
+                                                                    <a href=""><i class="fa fa-retweet"></i></a>
+                                                                    <a href=""><i class="fa fa-search"></i></a>
+                                                                </div>
+                                                                <div class="to-right">
+                                                                    <div id="product-control" class="owl-carousel owl-theme clearfix">
+                                                                        <div class="item"><div class="bullets"></div></div>
+                                                                        <div class="item"><div class="bullets"></div></div>
+                                                                        <div class="item"><div class="bullets"></div></div>
+                                                                        <div class="item"><div class="bullets"></div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <a href="" class="btn btn-to-cart"><span class="bag"></span><span>Add To cart</span><div class="clearfix"></div></a>
+                                                            </div>
+                                                            
+														</div>
+													</div>
+                                              </div>
+                                              
+                                              <div class="product-name">
+                                                  <a href="<?php echo base_url('product/productDetails/')?>?pid=<?php echo $latest_product['product_id'] ?>"><?php echo $latest_product['product_name'] ?></a>
+                                              </div>
+                                              <div class="star-1"></div>
+                                              <div class="product-price">
+                                                  <span><?php echo $latest_product['product_price'] ?></span>
+                                              </div>
+                                          </div>
+                                      <?php } ?>
+                                      </div>
+                                </div>
                               </div>
                               
                           </div>

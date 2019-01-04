@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 11:57 AM
+-- Generation Time: Jan 04, 2019 at 11:09 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -84,7 +84,20 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_image_1`, `product
 (9, 'pendrive3', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-03 10:54:55'),
 (10, 'pendrive3', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-03 10:54:59'),
 (11, 'pendrive3', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-03 10:55:03'),
-(12, 'pendrive3', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-03 10:55:05');
+(12, 'pendrive3', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-03 10:55:05'),
+(13, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:47'),
+(14, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:51'),
+(15, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:53'),
+(16, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:55'),
+(17, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:47'),
+(18, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:51'),
+(19, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:53'),
+(20, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:55'),
+(21, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:55'),
+(22, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:47'),
+(23, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:51'),
+(24, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:53'),
+(25, 'pendrive4', 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-04 02:22:55');
 
 -- --------------------------------------------------------
 
@@ -206,7 +219,7 @@ ALTER TABLE `examination`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `product_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `products`

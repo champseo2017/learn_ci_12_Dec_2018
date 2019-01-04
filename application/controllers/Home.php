@@ -5,20 +5,23 @@ class Home extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Product_model', 'product');
     }
     public function index()
     {
-        $this->load->model('Product_model', 'product');
-        $FeaturePro_01 = $this->product->getFeautureProduct(1);
-        $FeaturePro_02 = $this->product->getFeautureProduct(2);
-        $FeaturePro_03 = $this->product->getFeautureProduct(3);
+        
+        $feature_brogue_shoes = $this->product->getFeautureProduct(1, 4);
+        $feature_toe_cap  = $this->product->getFeautureProduct(2, 4);
+        $feature_monk_shoes = $this->product->getFeautureProduct(3, 4);
+        $latest_product_home = $this->product->getFeautureProduct(4, 8);
         // echo "<pre>";
         // print_r($FeaturePro); exit();
         // echo "</pre>";
         $send_data = array(
-            'FeaturePro_1' => $FeaturePro_01,
-            'FeaturePro_2' => $FeaturePro_02,
-            'FeaturePro_3' => $FeaturePro_03
+            'sub_feature_brogue_shoes' => $feature_brogue_shoes,  
+            'sub_feature_toe_cap' => $feature_toe_cap,
+            'sub_feature_monk_shoes' => $feature_monk_shoes,
+            'sub_latest_product_home' => $latest_product_home
         );
         $this->load->view('header/header');
         $this->load->view('home/home',$send_data);
