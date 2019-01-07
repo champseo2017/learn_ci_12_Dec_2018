@@ -19,4 +19,23 @@ class Product_model extends CI_Model {
         $res = $this->db->get('product');
         return $res->row_array(); //ข้อมูลเดียว
     }
+    public function getAllCategory ()
+    {
+        $res = $this->db->get('category');
+        return $res->result_array();
+    }
+    public function getSearchProResult($keyword)
+    {
+        
+        $this->db->or_like('product_name',$keyword);
+        $res = $this->db->get('product');
+        if($res->num_rows()>0)
+        {
+           return $res->result_array();
+        }else{
+            return false;
+        }
+       
+
+    }
 }

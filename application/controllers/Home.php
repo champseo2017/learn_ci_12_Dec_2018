@@ -14,14 +14,16 @@ class Home extends CI_Controller
         $feature_toe_cap  = $this->product->getFeautureProduct(2, 4);
         $feature_monk_shoes = $this->product->getFeautureProduct(3, 4);
         $latest_product_home = $this->product->getFeautureProduct(4, 8);
+        $getAllcat = $this->product->getAllCategory();
         // echo "<pre>";
-        // print_r($FeaturePro); exit();
+        // print_r($getAllcat); exit();
         // echo "</pre>";
         $send_data = array(
-            'sub_feature_brogue_shoes' => $feature_brogue_shoes,  
+            'sub_feature_brogue_shoes' => $feature_brogue_shoes,
             'sub_feature_toe_cap' => $feature_toe_cap,
             'sub_feature_monk_shoes' => $feature_monk_shoes,
-            'sub_latest_product_home' => $latest_product_home
+            'sub_latest_product_home' => $latest_product_home,
+            'category' => $getAllcat
         );
         $this->load->view('header/header');
         $this->load->view('home/home',$send_data);

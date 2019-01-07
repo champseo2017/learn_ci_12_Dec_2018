@@ -22,4 +22,23 @@ class Product extends CI_Controller
         $this->load->view('product/product_detail', $senddata_array);
         $this->load->view('footer/footer');
     }
+    public function searchProduct ()
+    {
+        $keyword = $this->input->post('searchpro');
+        $searchProRes = $this->product->getSearchProResult($keyword);
+        if($searchProRes)
+        {
+            $res_array = array(
+                'serch_res' => $searchProRes
+            );
+        }else{
+            redirect('serach_not_found');
+        }
+
+       
+        
+        $this->load->view('header/header');
+        $this->load->view('product/searchProduct',$res_array);
+        $this->load->view('footer/footer');
+    }
 }

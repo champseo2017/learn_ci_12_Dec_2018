@@ -13,7 +13,7 @@
   <div class="product-description">
 	<span>Headphones</span>
 	<h1><?php echo $proDetails['product_name'] ?></h1>
-	<p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+	<p><?php echo $proDetails['product_desc'] ?></p>
   </div>
 
   <!-- Product Configuration -->

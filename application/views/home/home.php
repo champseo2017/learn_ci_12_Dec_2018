@@ -335,7 +335,15 @@
                                       </div>
                                 </div>
                               </div>
-                              
+                              <?php echo form_open('product/searchProduct', array('role'=>'form')) ?>
+                              <input id="srchFId" class="" type="text" placeholder="Product Name" name="searchpro">
+                              <select class="srchTxt">
+                              <?php foreach($category as $categorys) { ?>
+                              <option><?php echo $categorys['cat_name'] ?></option>
+                              <?php } ?>
+                              </select>
+                                <button type="submit" id="submitButton" class="">Go Search</button>
+                                <?php echo form_close(); ?>
                           </div>
                       </div>
                   </div>
