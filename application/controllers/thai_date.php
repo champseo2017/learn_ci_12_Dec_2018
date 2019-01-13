@@ -28,6 +28,9 @@ class Thai_date extends CI_Controller
     public function show_date()
     {
         $td = $this->thai_date('now');
+		// echo "<pre>";
+        // print_r($td);
+        // echo "</pre>";
         echo "วันที่ผลิต " .$td['date']." ".$td['month']." ".$td['year']."<br>";
         $td = $this->thai_date('+180 days');
         echo "หมดอายุ {$td['date']} {$td['month']} {$td['year']}"; 
