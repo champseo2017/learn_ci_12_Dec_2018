@@ -42,5 +42,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/script_in_controller">script_in_controller .</a><br/>';
 		echo '<a href="/book">Update_Delete_book</a><br/>';
 		echo '<a href="/Learn_javascript_con">Learn javascript</a><br/>';
+		echo '<a href="thai_date/show_date">Thai date</a><br/>';
 	}
 }
