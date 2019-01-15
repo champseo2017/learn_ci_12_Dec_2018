@@ -337,18 +337,27 @@
                               </div>
                               <?php echo form_open('product/searchProduct', array('role'=>'form')) ?>
                               <input id="srchFId" class="" type="text" placeholder="Product Name" name="searchpro">
-                              <select class="srchTxt">
+                              <select class="srchTxt" name="cat_id">
+                              <option value="">All</option>
                               <?php foreach($category as $categorys) { ?>
-                              <option><?php echo $categorys['cat_name'] ?></option>
+                              <option value="<?php echo $categorys['cat_id'] ?>"><?php echo $categorys['cat_name'] ?></option>
                               <?php } ?>
                               </select>
-                                <button type="submit" id="submitButton" class="">Go Search</button>
-                                <?php echo form_close(); ?>
-                          </div>
+                              <button type="submit" id="submitButton" class="">Go Search</button>
+                              <?php echo form_close(); ?>
+                             
+                              </div>
                       </div>
                   </div>
               </div>
-              
+              <aside id="sidebar">
+              <div id="cat_01" style="cursor: pointer;">count all category (450)</div>
+                <div id="sidebar_shoes" style="display:none;">
+                <?php foreach ($category as $category_all) { ?>
+                 <section id="widget_1"><a href="<?php echo base_url('product/category') ?>?cat_id=<?php echo $category_all['cat_id'] ?>" target="_blank"><?php echo $category_all['cat_name'] ?>(100)</a></section>
+                <?php } ?>
+                </div>
+              </aside>
               <div class="content-offers">
                   <div class="container">
                       <div class="ct-offers">

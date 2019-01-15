@@ -24,18 +24,25 @@ class Product_model extends CI_Model {
         $res = $this->db->get('category');
         return $res->result_array();
     }
-    public function getSearchProResult($keyword)
+    public function getSearchProResult($keyword, $cat_id)
     {
-        
-        $this->db->or_like('product_name',$keyword);
-        $res = $this->db->get('product');
-        if($res->num_rows()>0)
-        {
-           return $res->result_array();
-        }else{
-            return false;
-        }
+       if($keyword !=""){
+        $this->db->like('product_name',$keyword);
+       }
+       if($cat_id !="") {
+        $this->db->where('cat_id',$cat_id);
+       }
+       $res = $this->db->get('product');
+       //echo $this->db->last_query(); exit();
+       return $res->result_array();
+    }
+    public function getCategory ($cat_id)
+    {
        
-
+        $query = $this->db->where('cat_id',$cat_id)
+                            ->get('product')
+                            ->result_array();
+        //echo $this->db->last_query(); exit();
+        return $query;
     }
 }

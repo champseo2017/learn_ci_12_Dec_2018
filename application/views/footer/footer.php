@@ -151,7 +151,10 @@ $(document).ready(function() {
       $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
       $(this).addClass('active');
   });
-
+    
+    $("#cat_01").click(function(){
+        $("#sidebar_shoes").toggle();
+    });
 
 });
 </script>

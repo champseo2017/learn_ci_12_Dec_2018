@@ -42,6 +42,18 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Products/script_in_controller">script_in_controller .</a><br/>';
 		echo '<a href="/book">Update_Delete_book</a><br/>';
 		echo '<a href="/Learn_javascript_con">Learn javascript</a><br/>';
-		echo '<a href="thai_date/show_date">Thai date</a><br/>';
+		echo '<a href="/select/select_data">การค้นหาหรือเลือกข้อมูล select</a><br/>';
+		echo '<a href="/select/select_get_where">ฟงก์ชั่น get_where()</a><br/>';
+		echo '<a href="/select/select_or_like">ฟงก์ชั่น get_where() or LIKE</a><br/>';
+		echo '<a href="/select/select_field">ฟงก์ชั่น select_field()</a><br/>';
+		echo '<a href="/select/selectsum">ฟงก์ชั่น select_field_sum()</a><br/>';
+		echo '<a href="/select/selectmin">ฟงก์ชั่น select_min()</a><br/>';
+		echo '<a href="/select/selectmax">ฟงก์ชั่น select_max()</a><br/>';
+		echo '<a href="/select/select_avg_output">ฟงก์ชั่น select_avg()</a><br/>';
+		echo '<a href="/select/select_sum_output">ฟงก์ชั่น select_sum2()</a><br/>';
+		echo '<a href="/select/select_where_output">ฟงก์ชั่น select_where()</a><br/>';
+		echo '<a href="/serverhttpuri">คืนค่า URi คืนค่าพาธ URL ทั้งหมด</a><br/>';
+		echo '<a href="/getimage">getsizeimage get_image</a><br/>';
+		echo '<a href="/session_user">session user</a><br/>';
 	}
 }

@@ -25,20 +25,25 @@ class Product extends CI_Controller
     public function searchProduct ()
     {
         $keyword = $this->input->post('searchpro');
-        $searchProRes = $this->product->getSearchProResult($keyword);
-        if($searchProRes)
-        {
-            $res_array = array(
+        $cat_id = $this->input->post('cat_id');
+        $searchProRes = $this->product->getSearchProResult($keyword,$cat_id);
+        $res_array = array(
                 'serch_res' => $searchProRes
-            );
-        }else{
-            redirect('serach_not_found');
-        }
-
-       
-        
+        );
         $this->load->view('header/header');
         $this->load->view('product/searchProduct',$res_array);
         $this->load->view('footer/footer');
+    }
+    public function category()
+    {
+        $cat_id = $this->input->get('cat_id');
+        $category = $this->product->getCategory($cat_id);
+        $res_array = array(
+                'category' => $category
+        );
+        $this->load->view('header/header');
+        $this->load->view('category',$res_array);
+        $this->load->view('footer/footer');
+       
     }
 }
