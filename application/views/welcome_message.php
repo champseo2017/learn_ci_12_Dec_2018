@@ -282,6 +282,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // console.log(font.color); //อ่านค่าตัวแปรภายในออบเจ็กต์
 // font.col //พร้อพเพอร์ตี้
 // // console.log(font.col); เข้าถึงตัวแปรภายในออบเจ็กต์
+
+//ฟังก์ชั่นคอนสตรัคเตอร์
+//ฟังก์ชั่นใน javascript สามารถเรียกได้ 2 วิธี
+// 1.เรียกแบบฟังก์ชั่นปกติธรรมดา
+// 2.เรียกโดยใช้โอเปอเรเตอร์ new
+// function constructor ที่แปลว่าผู้สร้างมันจะทำหน้าที่เป็นพิมพ์เขียว เอาไว้สร้างออบเจ็กต์ขึ้นมาโดยเฉพาะ ไม่ต้องใช้ปีกกาสร้าง
+function Car (color)
+{ 
+	//สำหรับ this ในที่นี้จะชี้ไปยังออบเจ็กต์ที่ถูกสร้างขึ้นมา จึงทำให้เฉพาะออบเจ็กต์ตัวนี้ พร็อพเพอร์ตี้ color จะมีค่าเป็น red เท่านั้น (เป็นข้อมูลของออบเจ็กต์)
+	this.color = color; //ใช้ this ที่ function นี้ ( ผูกตัวแปร color ไว้ที่ฟังก์ชั่นนี้ ) และ ค่า color จะถูกกำหนดไว่ที่ this.color
+	return true; //ไม่ได้ return true ออกไป
+}
+var redCar = new Car("red");
+var blueCar = new Car("blue");
+var normal = Car("pink");
+              // สร้างออบเจ็กต์ใหม่ได้เรื่อยๆด้วยโอปาเรอตร์ new
+console.log("ออบเจ็กต์ function constructor new = " + redCar.color);
+console.log("ออบเจ็กต์ function constructor new = " + blueCar.color);
+console.log("เรียกฟังก์ชั่นแบบปกติ" + normal);
+
+//เรียก function โดยที่ไม่มีอาร์กิวเมนต์ส่งเข้าไป
+function not_have_ar()
+{
+	console.log("not have อาร์กิวเมนต์");
+}
+var not_ar = new not_have_ar; // ถ้าไม่มีค่าอาร์กิวเมนต์อะไรส่งเข้าไปให้ก็ไม่จำเป็นต้องมีวงเล็บต่อท้ายชื่อฟังก์ชั่น
+console.log(not_ar);
+
 </script>
 
 </body>

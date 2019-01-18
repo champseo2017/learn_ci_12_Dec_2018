@@ -55,5 +55,9 @@ class Welcome extends CI_Controller {
 		echo '<a href="/serverhttpuri">คืนค่า URi คืนค่าพาธ URL ทั้งหมด</a><br/>';
 		echo '<a href="/getimage">getsizeimage get_image</a><br/>';
 		echo '<a href="/session_user">session user</a><br/>';
+		echo '<a href="/where_in_not_in">where_in or where in where not in</a><br/>';
+		echo '<a href="/mysql_like">My sql like</a><br/>';
+		echo '<a href="/or_like_not_like">Or like not like</a><br/>';
+		echo '<a href="/group_by">Group by</a><br/>';
 	}
 }
