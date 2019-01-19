@@ -59,5 +59,10 @@ class Welcome extends CI_Controller {
 		echo '<a href="/mysql_like">My sql like</a><br/>';
 		echo '<a href="/or_like_not_like">Or like not like</a><br/>';
 		echo '<a href="/group_by">Group by</a><br/>';
+		echo '<a href="/form_v1">Form v1</a><br/>';
+		echo '<a href="/Radio_v1">Radio v1</a><br/>';
+		echo '<a href="/form_check_box">Check box v1</a><br/>';
+		echo '<a href="/select_box">Select box</a><br/>';
+		echo '<a href="/form_check_boxv1">Form check box v1</a><br/>';
 	}
 }
