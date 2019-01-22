@@ -66,6 +66,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/form_check_boxv1">Form check box v1</a><br/>';
 		echo '<a href="/html_form">Html form</a><br/>';
 		echo '<a href="/form_array_v2">Form get array</a><br/>';
-		echo '<a href="/form_array_v3">Form get array v3</a><br/>';
+		echo '<a href="/form_array_v3/registerForm">Form get array v3</a><br/>';
 	}
 }
