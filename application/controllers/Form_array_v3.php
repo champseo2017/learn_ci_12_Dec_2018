@@ -18,27 +18,56 @@ class Form_array_v3 extends CI_Controller
     }
     public function save()
     {
-        $this->form_validation->set_rules('name', 'Name Field', 'required');
-        $this->form_validation->set_rules('age', 'Age Field', 'required|integer');
-        $this->form_validation->set_rules('accept_terms_checkbox', 'Name Field', 'required',array('required' => 'กรุณา Check box'));
-       
-       
-      
-   
+        $config = array(
+            array(
+                    'field' => 'name',
+                    'rules' => 'required'
+            ),
+            array(
+                    'field' => 'age',
+                    'rules' => 'required',
+                    'errors' => array(
+                            'required' => 'You must provide a %s.',
+                ),
+            ),
+            array(
+                'field' => 'myradio',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => 'You must provide a %s.',
+                ),
+            ),
+            array(
+                'field' => 'gender',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => 'You must provide a %s.',
+                ),
+            ),
+            array(
+                'field' => 'groups[]',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => 'You must provide a select box',
+                ),
+            ),
+        );
+        $this->form_validation->set_rules($config);
+        // $rules = [        
+        //     ['field' => 'groups[]', 'label' => 'groups', 'rules' => 'required']
+        // ];
+        // $this->form_validation->set_rules($rules);
         if($this->form_validation->run() == FALSE){
-       
+           
             $this->load->view('reg_oldvalue_v1');
 
         }else{
            if($_POST){
 
-                $accept_terms_checkbox = $_POST['accept_terms_checkbox'];
+                $accept_terms_checkbox = $_POST['groups'];
                 var_dump($accept_terms_checkbox);
 
            }
-           
-           
-           
             // $result = $this->db->insert('tbl', $data_to_be_save);
             // if($result){
             //     echo "save";
