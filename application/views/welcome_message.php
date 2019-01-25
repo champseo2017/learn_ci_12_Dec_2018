@@ -311,6 +311,5 @@ var not_ar = new not_have_ar; // ถ้าไม่มีค่าอาร์�
 console.log(not_ar);
 
 </script>
-
 </body>
 </html>

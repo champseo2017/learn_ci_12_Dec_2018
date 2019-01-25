@@ -67,5 +67,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/html_form">Html form</a><br/>';
 		echo '<a href="/form_array_v2">Form get array</a><br/>';
 		echo '<a href="/form_array_v3/registerForm">Form get array v3</a><br/>';
+		echo '<a href="/facebook_login_test">test facebook login</a><br/>';
 	}
 }
