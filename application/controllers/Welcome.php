@@ -70,5 +70,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/facebook_login_test">test facebook login</a><br/>';
 		echo '<a href="/strlen_input">Strlen_input</a><br/>';
 		echo '<a href="/trim_input">Trim_input</a><br/>';
+		echo '<a href="/getmac/get_php">get_php</a><br/>';
 	}
 }
