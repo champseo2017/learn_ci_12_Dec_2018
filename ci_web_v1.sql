@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2018 at 02:07 AM
+-- Generation Time: Jan 30, 2019 at 07:28 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `ci_web_v1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `cat_id` int(11) NOT NULL,
+  `cat_name` varchar(255) DEFAULT NULL,
+  `cat_desc` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`cat_id`, `cat_name`, `cat_desc`) VALUES
+(1, 'clothes', 'clothes category'),
+(2, 'shoes', 'shoes category'),
+(3, 'jacket', 'jacket category'),
+(4, 'towel', 'towel category');
 
 -- --------------------------------------------------------
 
@@ -53,197 +75,53 @@ INSERT INTO `examination` (`id`, `no_number`, `question`, `choice1`, `choice2`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mst_admin`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `mst_admin` (
-  `id` int(11) NOT NULL,
-  `loginid` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `product` (
+  `product_id` int(6) NOT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `cat_id` int(10) DEFAULT NULL,
+  `product_image_1` varchar(255) DEFAULT NULL,
+  `product_image_2` varchar(255) NOT NULL,
+  `product_image_3` varchar(255) NOT NULL,
+  `product_image_4` varchar(255) NOT NULL,
+  `product_price` int(10) DEFAULT NULL,
+  `product_type` int(2) DEFAULT NULL,
+  `product_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `product_desc` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `mst_admin`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `mst_admin` (`id`, `loginid`, `pass`) VALUES
-(1, 'sanjeev', 'sanjeev');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_question`
---
-
-CREATE TABLE `mst_question` (
-  `que_id` int(5) NOT NULL,
-  `test_id` int(5) DEFAULT NULL,
-  `que_desc` varchar(150) DEFAULT NULL,
-  `ans1` varchar(75) DEFAULT NULL,
-  `ans2` varchar(75) DEFAULT NULL,
-  `ans3` varchar(75) DEFAULT NULL,
-  `ans4` varchar(75) DEFAULT NULL,
-  `true_ans` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_question`
---
-
-INSERT INTO `mst_question` (`que_id`, `test_id`, `que_desc`, `ans1`, `ans2`, `ans3`, `ans4`, `true_ans`) VALUES
-(16, 8, 'What  Default Data Type ?', 'String', 'Variant', 'Integer', 'Boolear', 2),
-(17, 8, 'What is Default Form Border Style ?', 'Fixed Single', 'None', 'Sizeable', 'Fixed Diaglog', 3),
-(18, 8, 'Which is not type of Control ?', 'text', 'lable', 'checkbox', 'option button', 1),
-(19, 9, 'Which of the follwing contexts are available in the add watch window?', 'Project', 'Module', 'Procedure', 'All', 4),
-(20, 9, 'Which window will allow you to halt the execution of your code when a variable changes?', 'The call stack window', 'The immedite window', 'The locals window', 'The watch window', 4),
-(22, 9, 'How can you print the object name associated with the last VB  error to the Immediate window?', 'Debug.Print Err.Number', 'Debug.Print Err.Source', 'Debug.Print Err.Description', 'Debug.Print Err.LastDLLError', 2),
-(23, 9, 'How can you print the object name associated with the last VB  error to the Immediate window?', 'Debug.Print Err.Number', 'Debug.Print Err.Source', 'Debug.Print Err.Description', 'Debug.Print Err.LastDLLError', 2),
-(24, 9, 'What function does the TabStop property on a command button perform?', 'It determines whether the button can get the focus', 'If set to False it disables the Tabindex property.', 'It determines the order in which the button will receive the focus', 'It determines if the access key swquence can be used', 1),
-(25, 10, 'You application creates an instance of a form. What is the first event that will be triggered in the from?', 'Load', 'GotFocus', 'Instance', 'Initialize', 4),
-(26, 10, 'Which of the following is Hungarian notation for a menu?', 'Menu', 'Men', 'mnu', 'MN', 3),
-(27, 10, 'You are ready to run your program to see if it works.Which key on your keyboard will start the program?', 'F2', 'F3', 'F4', 'F5', 4),
-(28, 10, 'Which of the following snippets of code will unload a form named frmFo0rm from memory?', 'Unload Form', 'Unload This', 'Unload Me', 'Unload', 3),
-(29, 10, 'You want the text in text box named txtMyText to read My Text.In which property will you place this string?', 'Caption', 'Text', 'String', 'None of the above', 2),
-(30, 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0),
-(31, 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_result`
---
-
-CREATE TABLE `mst_result` (
-  `login` varchar(20) DEFAULT NULL,
-  `test_id` int(5) DEFAULT NULL,
-  `test_date` date DEFAULT NULL,
-  `score` int(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_result`
---
-
-INSERT INTO `mst_result` (`login`, `test_id`, `test_date`, `score`) VALUES
-('raj', 8, '0000-00-00', 3),
-('raj', 9, '0000-00-00', 3),
-('raj', 8, '0000-00-00', 1),
-('ashish', 10, '0000-00-00', 3),
-('ashish', 9, '0000-00-00', 2),
-('ashish', 10, '0000-00-00', 0),
-('raj', 8, '0000-00-00', 0),
-('ankur', 11, '0000-00-00', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_subject`
---
-
-CREATE TABLE `mst_subject` (
-  `sub_id` int(5) NOT NULL,
-  `sub_name` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_subject`
---
-
-INSERT INTO `mst_subject` (`sub_id`, `sub_name`) VALUES
-(1, 'VB'),
-(2, 'Oracle'),
-(3, 'Java'),
-(4, 'PHP'),
-(5, 'Computer Fundamental'),
-(6, 'Networking'),
-(7, 'mysql');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_test`
---
-
-CREATE TABLE `mst_test` (
-  `test_id` int(5) NOT NULL,
-  `sub_id` int(5) DEFAULT NULL,
-  `test_name` varchar(30) DEFAULT NULL,
-  `total_que` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_test`
---
-
-INSERT INTO `mst_test` (`test_id`, `sub_id`, `test_name`, `total_que`) VALUES
-(8, 1, 'VB Basic Test', '3'),
-(9, 1, 'Essentials of VB', '5'),
-(10, 1, 'Creating User Services', '5'),
-(11, 7, 'function', '5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_user`
---
-
-CREATE TABLE `mst_user` (
-  `user_id` int(5) NOT NULL,
-  `login` varchar(20) DEFAULT NULL,
-  `pass` varchar(20) DEFAULT NULL,
-  `username` varchar(30) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `city` varchar(15) DEFAULT NULL,
-  `phone` int(10) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_user`
---
-
-INSERT INTO `mst_user` (`user_id`, `login`, `pass`, `username`, `address`, `city`, `phone`, `email`) VALUES
-(1, 'raj', 'raj', 'Rajen', 'limbdi', 'limbdi', 9999, 'raj@yahoo.com'),
-(12, 'ashish', 'shah', 'ashish', 'laskdjf', 'S\'nagar', 228585, 'ashish@yahoo.com'),
-(14, 'Dhaval123', 'a', 'a', 'a', 'a', 0, 'dhaval@yahoo.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_useranswer`
---
-
-CREATE TABLE `mst_useranswer` (
-  `sess_id` varchar(80) DEFAULT NULL,
-  `test_id` int(11) DEFAULT NULL,
-  `que_des` varchar(200) DEFAULT NULL,
-  `ans1` varchar(50) DEFAULT NULL,
-  `ans2` varchar(50) DEFAULT NULL,
-  `ans3` varchar(50) DEFAULT NULL,
-  `ans4` varchar(50) DEFAULT NULL,
-  `true_ans` int(11) DEFAULT NULL,
-  `your_ans` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mst_useranswer`
---
-
-INSERT INTO `mst_useranswer` (`sess_id`, `test_id`, `que_des`, `ans1`, `ans2`, `ans3`, `ans4`, `true_ans`, `your_ans`) VALUES
-('2b8e3337837b82112def8d3e2f42f26e', 8, 'What  Default Data Type ?', 'String', 'Variant', 'Integer', 'Boolear', 2, 1),
-('2b8e3337837b82112def8d3e2f42f26e', 8, 'What is Default Form Border Style ?', 'Fixed Single', 'None', 'Sizeable', 'Fixed Diaglog', 3, 3),
-('2b8e3337837b82112def8d3e2f42f26e', 8, 'Which is not type of Control ?', 'text', 'lable', 'checkbox', 'option button', 1, 3),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 1),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 1),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 2),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 3),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 4),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 4),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 3),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 2),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 2),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 1),
-('idjir9pcq2d07764us8rdiq9n5', 11, 'how to use date( ) in mysql ?', 'now( )', 'today( )', 'date( )', 'time( )', 0, 1);
+INSERT INTO `product` (`product_id`, `product_name`, `cat_id`, `product_image_1`, `product_image_2`, `product_image_3`, `product_image_4`, `product_price`, `product_type`, `product_time`, `product_desc`) VALUES
+(1, 'Shout', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 100, 1, '2019-01-08 02:48:56', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(2, 'memory', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 50, 1, '2019-01-08 02:48:58', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(3, 'shoe', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 30, 1, '2019-01-08 02:49:00', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(4, 'pendrive', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 1, '2019-01-08 02:49:03', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(5, 'pendrive2', 1, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 2, '2019-01-08 02:49:05', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(6, 'pendrive2', 1, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 2, '2019-01-08 02:49:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(7, 'pendrive2', 2, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 2, '2019-01-08 02:49:10', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(8, 'pendrive2', 2, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 2, '2019-01-08 02:49:12', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(9, 'pendrive3', 3, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-08 02:49:15', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(10, 'pendrive3', 3, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-08 02:49:18', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(11, 'pendrive3', 3, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-08 02:49:21', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(12, 'pendrive3', 3, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 3, '2019-01-08 02:49:24', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(13, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:26', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(14, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:28', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(15, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:31', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(16, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:33', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(17, 'pendrive4', 2, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:36', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(18, 'pendrive4', 3, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:38', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(19, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:40', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(20, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:44', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(21, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:45', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(22, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:48', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(23, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:50', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(24, 'pendrive4', 4, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:52', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'),
+(25, 'pendrive4', 2, 'assets/uploads/products/p-1.jpg', 'assets/uploads/products/p-2.jpg', 'assets/uploads/products/p-3.jpg', 'assets/uploads/products/p-4.jpg', 150, 4, '2019-01-08 02:49:54', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.');
 
 -- --------------------------------------------------------
 
@@ -255,21 +133,121 @@ CREATE TABLE `products` (
   `id` int(4) NOT NULL,
   `code` varchar(10) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `price` double(6,2) DEFAULT NULL
+  `price` double(6,2) DEFAULT NULL,
+  `qty` int(11) NOT NULL,
+  `category` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `code`, `name`, `price`) VALUES
-(4, '001', 'CodeIgniter 2.0 Web Application Development', 150.00),
-(5, '002', 'Facebook Graph Development', 250.00),
-(6, '003', 'ExtJS: Rich Internet Application Development', 290.00);
+INSERT INTO `products` (`id`, `code`, `name`, `price`, `qty`, `category`) VALUES
+(12, '001', 'book01', 130.00, 30, 5),
+(13, '002', 'book02', 20.00, 5, 0),
+(14, '003', 'book03', 10.00, 30, 0),
+(15, '004', 'book04', 5.00, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session_user`
+--
+
+CREATE TABLE `session_user` (
+  `session` char(100) NOT NULL,
+  `time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `session_user`
+--
+
+INSERT INTO `session_user` (`session`, `time`) VALUES
+('1547603533', 1547603552);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE `tbl_user` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(100) NOT NULL,
+  `user_pass` varchar(100) NOT NULL,
+  `user_login_status` tinyint(1) NOT NULL,
+  `user_datetime_using` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_pass`, `user_login_status`, `user_datetime_using`) VALUES
+(1, 'demo', 'test', 0, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `role` enum('Admin','Editor','Author') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin', '123456', 'Admin'),
+(2, 'editor', '123456', 'Editor'),
+(3, 'author', '123456', 'Author');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `uname` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `password_confirmation` varchar(100) DEFAULT NULL,
+  `ip` varchar(255) NOT NULL,
+  `is_new_customer` varchar(100) NOT NULL,
+  `email_create` varchar(100) NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `uname`, `first_name`, `last_name`, `email`, `password`, `password_confirmation`, `ip`, `is_new_customer`, `email_create`, `reg_date`) VALUES
+(8, 'boomgt123', 'champ', 'champboomgt', 'noomgt123@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '1', '1', '2019-01-02 07:43:23'),
+(9, 'noomgt', 'boomgt', 'champ', 'champ@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '1', '1', '2019-01-02 08:42:49'),
+(10, 'fewfewfffff', 'fffffffffff', 'fewfwefwefwef', 'dd@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '1', '1', '2019-01-02 10:20:36'),
+(11, 'fwefwefwef', 'fewfwe', 'fwefwef', 'ddd@gmail.com', '25f9e794323b453885f5181f1b624d0b', '25f9e794323b453885f5181f1b624d0b', '127.0.0.1', '1', '1', '2019-01-02 10:44:42');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`cat_id`);
 
 --
 -- Indexes for table `examination`
@@ -278,34 +256,10 @@ ALTER TABLE `examination`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mst_admin`
+-- Indexes for table `product`
 --
-ALTER TABLE `mst_admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mst_question`
---
-ALTER TABLE `mst_question`
-  ADD PRIMARY KEY (`que_id`);
-
---
--- Indexes for table `mst_subject`
---
-ALTER TABLE `mst_subject`
-  ADD PRIMARY KEY (`sub_id`);
-
---
--- Indexes for table `mst_test`
---
-ALTER TABLE `mst_test`
-  ADD PRIMARY KEY (`test_id`);
-
---
--- Indexes for table `mst_user`
---
-ALTER TABLE `mst_user`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `products`
@@ -314,8 +268,39 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `session_user`
+--
+ALTER TABLE `session_user`
+  ADD PRIMARY KEY (`session`);
+
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_login_status` (`user_login_status`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `examination`
@@ -324,40 +309,34 @@ ALTER TABLE `examination`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `mst_admin`
+-- AUTO_INCREMENT for table `product`
 --
-ALTER TABLE `mst_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `mst_question`
---
-ALTER TABLE `mst_question`
-  MODIFY `que_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
---
--- AUTO_INCREMENT for table `mst_subject`
---
-ALTER TABLE `mst_subject`
-  MODIFY `sub_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `mst_test`
---
-ALTER TABLE `mst_test`
-  MODIFY `test_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `mst_user`
---
-ALTER TABLE `mst_user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `product`
+  MODIFY `product_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

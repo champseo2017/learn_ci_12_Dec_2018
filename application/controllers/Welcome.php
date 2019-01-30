@@ -72,5 +72,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/trim_input">Trim_input</a><br/>';
 		echo '<a href="/getmac/get_php">get_php</a><br/>';
 		echo '<a href="/function_pass1">Function_pass1</a><br/>';
+		echo '<a href="/user_account">User_account</a><br/>';
 	}
 }
