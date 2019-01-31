@@ -9,6 +9,7 @@ class User_account extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->model('User_account_model', 'user');
     }
     public function index ()
     {
@@ -19,13 +20,11 @@ class User_account extends CI_Controller
         if(isset($_POST['btn_login'])){ // เมื่อกดปุ่มล็กอิน
             // ตรวจสอบการส่งค่าฟอร์ม ชื่อผู้ใช้และรหัสผ่าน
             if(isset($_POST['u_name']) && $_POST['u_name']!="" && isset($_POST['u_pass']) && $_POST['u_pass']!=""){
-
-                $sql = $this->db->where('user_name', $_POST['u_name'])
-                                ->where('user_pass', $_POST['u_pass'])
-                                ->get('tbl_user');
-                $num = $sql->num_rows();
+               $u_name = $_POST['u_name'];
+               $u_pass = $_POST['u_pass'];
+               $sql = $this->user->select_user($u_name,$u_pass);
+               $num = $sql->num_rows();
                 print_r($num);
-
             }
         }
     }
