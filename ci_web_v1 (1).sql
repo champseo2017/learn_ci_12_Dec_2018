@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2019 at 07:28 PM
+-- Generation Time: Feb 02, 2019 at 12:52 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -185,7 +185,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_pass`, `user_login_status`, `user_datetime_using`) VALUES
-(1, 'demo', 'test', 0, '0000-00-00 00:00:00');
+(1, 'demo', 'test', 0, '2019-02-02 18:43:42');
 
 -- --------------------------------------------------------
 

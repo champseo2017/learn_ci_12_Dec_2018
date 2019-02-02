@@ -1,7 +1,7 @@
 <?php
 session_start();
 $msg_login_error=array(
-    "1"=>"เกิดข้อผิดพลาด ชื่อล็อกอินนี้ กำลังใช้งานอยู่! ",
+    "1"=>"เกิดข้อผิดพลาด ชื่อล็อกอินนี้ กำลังใช้งานอยู่ โปรดรออีก 5 นาที! ",
     "2"=>"เกิดข้อผิดพลาด โปรดกรอกชื่อผู้ใช้และรหัสผ่าน! ",
     "3"=>"เกิดข้อผิดพลาด ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง! ",    
 );
@@ -33,7 +33,7 @@ $msg_login_error=array(
     <input type="submit" value="Login" name="btn_login">
     <br>
     <?php if(isset($_GET['error'])){?>
-    <?=$msg_login_error[$_GET['error']]?>
+    <?php echo $msg_login_error[$_GET['error']]?>
     <?php } ?>
     </div>
     
