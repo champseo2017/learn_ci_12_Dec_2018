@@ -74,5 +74,8 @@ class Welcome extends CI_Controller {
 		echo '<a href="/function_pass1">Function_pass1</a><br/>';
 		echo '<a href="/user_account">User_account</a><br/>';
 		echo '<a href="/numeric_type">check numeric_type</a><br/>';
+		echo '<a href="/checkdate">Check_date</a><br/>';
+		echo '<a href="/checkdate/timestamp_little">timestamp_little</a><br/>';
+		echo '<a href="/php_filter">php_filter</a><br/>';
 	}
 }
