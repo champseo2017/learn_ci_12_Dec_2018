@@ -80,5 +80,7 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Regular_ex01">Regular</a><br/>';
 		echo '<a href="/Regular_ex01/pregsplit">Pregsplit</a><br/>';
 		echo '<a href="/Regular_ex01/form_ex_01">form_ex_01</a><br/>';
+		echo '<a href="/regex_01">Regex_01</a><br/>';
+		echo '<a href="/regex_01/RegEx_02">Regex_02</a><br/>';
 	}
 }
