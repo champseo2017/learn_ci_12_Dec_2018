@@ -83,5 +83,6 @@ class Welcome extends CI_Controller {
 		echo '<a href="/regex_01">Regex_01</a><br/>';
 		echo '<a href="/regex_01/RegEx_02">Regex_02</a><br/>';
 		echo '<a href="/Date_ex_01">Date_ex_01</a><br/>';
+		echo '<a href="/Date_ex_01/Increase_decrease_date">Increase_decrease_date</a><br/>';
 	}
 }
