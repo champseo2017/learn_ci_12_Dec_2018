@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2019 at 12:52 PM
+-- Generation Time: Feb 20, 2019 at 01:46 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `ci_web_v1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answer`
+--
+
+CREATE TABLE `answer` (
+  `aquestionno` int(4) NOT NULL,
+  `ano` int(4) DEFAULT NULL,
+  `adetail` longtext,
+  `aname` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `board`
+--
+
+CREATE TABLE `board` (
+  `qno` int(4) NOT NULL,
+  `qtopic` varchar(50) DEFAULT NULL,
+  `qdetail` longtext,
+  `qname` varchar(20) DEFAULT NULL,
+  `qcount` int(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -244,6 +271,18 @@ INSERT INTO `users` (`id`, `uname`, `first_name`, `last_name`, `email`, `passwor
 --
 
 --
+-- Indexes for table `answer`
+--
+ALTER TABLE `answer`
+  ADD PRIMARY KEY (`aquestionno`);
+
+--
+-- Indexes for table `board`
+--
+ALTER TABLE `board`
+  ADD PRIMARY KEY (`qno`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -295,6 +334,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `answer`
+--
+ALTER TABLE `answer`
+  MODIFY `aquestionno` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `board`
+--
+ALTER TABLE `board`
+  MODIFY `qno` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category`
