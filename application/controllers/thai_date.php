@@ -11,7 +11,8 @@ class Thai_date extends CI_Controller
        $ts = strtotime($datetime_string);
        if(!$ts)
        {
-            return array(); //กรณีแปลงเป็น timestamp ไม่ได้
+            // return array(); //กรณีแปลงเป็น timestamp ไม่ได้
+            return false;
        }
        $days = array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์");
        $months = array(1=>"มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
@@ -28,12 +29,22 @@ class Thai_date extends CI_Controller
     public function show_date()
     {
         $td = $this->thai_date('now');
-		// echo "<pre>";
-        // print_r($td);
-        // echo "</pre>";
-        echo "วันที่ผลิต " .$td['date']." ".$td['month']." ".$td['year']."<br>";
-        $td = $this->thai_date('+180 days');
-        echo "หมดอายุ {$td['date']} {$td['month']} {$td['year']}"; 
+        
+        if($td == false){
+
+            echo "ไม่สามารถคำนวณวันที่ผลิตได้<br>"; 
+        }else{
+            echo "วันที่ผลิต " .$td['date']." ".$td['month']." ".$td['year']."<br>";
+        }
+		
+        $td = $this->thai_date('+ 180 days');
+
+        if($td == false) {
+            echo "ไม่สามารถคำนวณวันที่หมดอายุได้"; 
+        }else{
+            echo "วันหมดอายุ {$td['date']} {$td['month']} {$td['year']}"; 
+        }
+        
     }
 
 }
