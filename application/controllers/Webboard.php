@@ -9,7 +9,9 @@ class Webboard extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->library('user_agent');
         $this->load->model('Webboard_models', 'webboard');
+
     }
 
     public function index()
@@ -30,12 +32,53 @@ class Webboard extends CI_Controller
 
     public function insert_question()
     {
-        if($_POST['topic'] != '')
+        $input = $this->input->post(array('topic', 'detail' ,'name'), true);
+
+        if(strlen(trim($input['topic'])) == 0)
         {
-            echo "<p>Welcome</p>";
-            
+            echo "โปรดกรอกข้อมูล";
+        }elseif(strlen(trim($input['detail'])) == 0){
+            echo "โปรดกรอกข้อมูล";
+        }elseif(strlen(trim($input['name'])) == 0){
+            echo "โปรดกรอกข้อมูล";
         }else{
-            echo "<p>No input</p>";
+
+            $topic = stripslashes($input['topic']); 
+            $topic = htmlspecialchars($input['topic'], ENT_QUOTES); 
+            $topic = strip_tags($input['topic']);
+          
+            $detail = stripslashes($input['detail']); 
+            $detail = htmlspecialchars($input['detail'], ENT_QUOTES); 
+            $detail = strip_tags($input['detail']);
+    
+            $name = stripslashes($input['name']); 
+            $name = htmlspecialchars($input['name'], ENT_QUOTES); 
+            $name = strip_tags($input['name']);
+            
+            $query = $this->webboard->select_question();
+            
+            $itemno = $query + 1;
+            
+            $insert = $this->webboard->insert_question($itemno, $topic, $detail, $name);
+            
+            if($insert)
+            {
+                echo "เพิ่มกระทู้ใหม่ลงสู่ฐานข้อมูลเรียบร้อย<p>";
+            }else{
+                echo "ไม่สามารถเพิ่มกระทู้ใหม่ลงในฐานข้อมูลได้<p>";
+            }
+
         }
+
+        $back = $this->agent->referrer();
+        $url = base_url()."Webboard/show_question";
+        echo "<a href='$url'>แสดงกระทู้ทั้งหมด</a><br>";
+        echo "<a href='$back'>กลับสู่หน้าฟอร์มตั้งกระทู้</a><br>";
+
+    }
+
+    public function show_question ()
+    {
+        echo "show_question";
     }
 }
