@@ -8,7 +8,7 @@ class Webboard_models extends CI_Model {
     public function select_question()
     {
         $query = $this->db->get('question')
-                          ->num_rows();
+                                ->num_rows();
         return $query;
     }
 
@@ -26,4 +26,14 @@ class Webboard_models extends CI_Model {
         $insert = $this->db->insert('question', $data);
         return $insert;
     }
+
+    public function show_question_all ()
+    {
+        $query = $this->db->select('*')
+                            ->order_by('qno', 'DESC')
+                            ->get('question')
+                            ->result_array();
+        return $query;
+    }
+
 }

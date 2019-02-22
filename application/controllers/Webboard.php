@@ -79,6 +79,37 @@ class Webboard extends CI_Controller
 
     public function show_question ()
     {
-        echo "show_question";
+        $query = $this->webboard->show_question_all();
+        $count_qtopic = count($query);
+        if($count_qtopic == 0)
+        {
+            echo "<p>ไม่มีกระทู้ในระบบ</p>";
+        }else{
+            echo "<h2>กระทู้ทั้งหมด</h2>";
+            foreach($query as $key => $querys)
+            {
+                $get_qno = $querys['qno'];
+                $qtopic = $querys['qtopic'];
+                $qname = $querys['qname'];
+                $qcount = $querys['qcount'];
+    
+                $url = base_url()."Webboard/show_detail?item=$get_qno";
+                $url_form_qu = base_url()."Webboard";
+              
+                echo "หมายเลขกระทู้ &nbsp; $get_qno &nbsp;<span style='color:black'>คำถาม</span>&nbsp;<a href='$url'>";
+                echo "&nbsp;$qtopic</a> &nbsp;";
+                echo "ชื่อผู้ตั้งกระทู้ $qname&nbsp;";
+                echo "จำนวนผู้ตอบกระทู้&nbsp;[".$qcount."]<br>\n";
+                echo "<hr>";
+                
+            }
+            echo "<a href='$url_form_qu'>ตั้งกระทู้ใหม่</a>";
+        }
+       
+    }
+
+    public function show_detail()
+    {
+        echo $this->input->get('item', true);
     }
 }
