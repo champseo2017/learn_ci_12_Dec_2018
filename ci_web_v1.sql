@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2019 at 01:46 AM
+-- Generation Time: Feb 26, 2019 at 02:19 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -30,23 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `answer` (
   `aquestionno` int(4) NOT NULL,
-  `ano` int(4) DEFAULT NULL,
+  `ano` int(4) NOT NULL,
   `adetail` longtext,
   `aname` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `board`
---
-
-CREATE TABLE `board` (
-  `qno` int(4) NOT NULL,
-  `qtopic` varchar(50) DEFAULT NULL,
-  `qdetail` longtext,
-  `qname` varchar(20) DEFAULT NULL,
-  `qcount` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -178,6 +164,31 @@ INSERT INTO `products` (`id`, `code`, `name`, `price`, `qty`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `question`
+--
+
+CREATE TABLE `question` (
+  `qno` int(4) NOT NULL,
+  `qtopic` varchar(50) DEFAULT NULL,
+  `qdetail` longtext,
+  `qname` varchar(20) DEFAULT NULL,
+  `qcount` int(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`qno`, `qtopic`, `qdetail`, `qname`, `qcount`) VALUES
+(1, 'กระทู้ที่หนึ่ง', 'กระทู้ที่หนึ่ง', 'แชมป์', 0),
+(2, 'ทำไมโลกถึงกลม', 'สงสัยทำไมโลกถึงกลม', 'แชมป์', 0),
+(3, 'โลกเกิดไรขึ้น', 'โลกเกิดไรขึ้น', 'แชมป์', 0),
+(4, 'ทดสอบนะครับ5', 'ทดสอบนะครับ5', 'ทดสอบนะครับ5', 0),
+(5, 'fewf', 'fwefwef', 'wefwef', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `session_user`
 --
 
@@ -274,13 +285,7 @@ INSERT INTO `users` (`id`, `uname`, `first_name`, `last_name`, `email`, `passwor
 -- Indexes for table `answer`
 --
 ALTER TABLE `answer`
-  ADD PRIMARY KEY (`aquestionno`);
-
---
--- Indexes for table `board`
---
-ALTER TABLE `board`
-  ADD PRIMARY KEY (`qno`);
+  ADD PRIMARY KEY (`ano`);
 
 --
 -- Indexes for table `category`
@@ -305,6 +310,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`qno`);
 
 --
 -- Indexes for table `session_user`
@@ -339,13 +350,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `aquestionno` int(4) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `board`
---
-ALTER TABLE `board`
-  MODIFY `qno` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `ano` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -370,6 +375,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `products`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `question`
+--
+ALTER TABLE `question`
+  MODIFY `qno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

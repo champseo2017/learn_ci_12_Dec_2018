@@ -36,4 +36,24 @@ class Webboard_models extends CI_Model {
         return $query;
     }
 
+    public function select_question_qno ($item)
+    {
+
+        $query = $this->db->select('*')
+                            ->where('qno', $item)
+                            ->get('question')
+                            ->result_array();
+        return $query;
+        
+    }
+
+    public function select_answerw_item($item)
+    {
+        $query = $this->db->select('*')
+                            ->where('aquestionno', $item)
+                            ->get('answer')
+                            ->result_array();
+        return $query;
+    }
+
 }

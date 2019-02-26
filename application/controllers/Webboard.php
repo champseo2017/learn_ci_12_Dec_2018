@@ -110,6 +110,52 @@ class Webboard extends CI_Controller
 
     public function show_detail()
     {
-        echo $this->input->get('item', true);
+        $item = $this->input->get('item', true);
+        $query = $this->webboard->select_question_qno($item);
+        echo 'คำถาม <b>';
+        echo $query[0]['qtopic'];
+        echo '</b><br>';
+        echo '<table width="100%" border="1" bgcolor="#E0E0E0" bordercolor="black">';
+        echo '<tr><td>';
+        echo $query[0]['qdetail'];
+        echo '<br>';
+        echo '<span>โดย</span><b>';
+        echo $query[0]['qname'];
+        echo '</td></tr>';
+        echo '</table><br>';
+        $query_answer = $this->webboard->select_answerw_item($item);
+        if($query_answer)
+        {
+            foreach($query_answer as $query_answers)
+            {
+                echo 'คำตอบที่ <b>';
+                echo $query_answers['ano'];
+                echo '</b><br>';
+                echo '<table width="100%" border="1">';
+                echo '<tr><td>';
+                echo $query_answers['adetail'];
+                echo '<br>';
+                echo 'โดย <b>';
+                echo $query_answers['aname'];
+                echo '</b>';
+                echo '</td></tr>';
+                echo '</table><br>';
+            }
+        }
+
+        $url = base_url()."Webboard/add_answer?answerno=$item";
+        echo form_open($url);
+        echo 'คำตอบ : <br>';
+        echo '<textarea cols="40" rows="5" name="a_answer"></textarea><br>';
+        echo 'ชื่อ : <input type="text" name="a_name" size="30"><br><br>';
+        echo '<input type="submit" value="ส่งคำตอบ">&nbsp';
+        echo '<input type="reset" value="ยกเลิก">';
+        echo form_close();
+    }
+
+    public function add_answer ()
+    {
+        $item = $this->input->get('answerno', true);
+        echo $item;
     }
 }
