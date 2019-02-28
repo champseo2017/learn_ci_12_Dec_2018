@@ -47,6 +47,24 @@ class Webboard_models extends CI_Model {
         
     }
 
+    public function update_question ($qcount, $answerno)
+    {
+        $data = array(
+            'qcount' => $qcount
+        );
+
+        return $this->db->update('question', $data, array('qno' => $answerno));
+    }
+
+    public function select_qcount ($answerno)
+    {
+        $query = $this->db->select('*')
+                        ->where('aquestionno', $answerno)
+                        ->get('answer')
+                        ->num_rows();
+        return $query;
+    }
+
     public function select_answerw_item($item)
     {
         $query = $this->db->select('*')
@@ -54,6 +72,28 @@ class Webboard_models extends CI_Model {
                             ->get('answer')
                             ->result_array();
         return $query;
+    }
+
+    public function select_answer_wh($item)
+    {
+        $query = $this->db->select('*')
+                        ->where('aquestionno', $item)
+                        ->get('answer')
+                        ->num_rows();
+        return $query;
+    }
+
+    public function insert_answer($answerno, $a_answer, $a_name)
+    {
+        $data = array(
+
+            'aquestionno' => $answerno,
+            'adetail' => $a_answer,
+            'aname' => $a_name
+        );
+
+        $insert = $this->db->insert('answer', $data);
+        return $insert;
     }
 
 }

@@ -126,10 +126,10 @@ class Webboard extends CI_Controller
         $query_answer = $this->webboard->select_answerw_item($item);
         if($query_answer)
         {
-            foreach($query_answer as $query_answers)
+            foreach($query_answer as $key => $query_answers)
             {
                 echo 'คำตอบที่ <b>';
-                echo $query_answers['ano'];
+                echo $key + 1;
                 echo '</b><br>';
                 echo '<table width="100%" border="1">';
                 echo '<tr><td>';
@@ -144,6 +144,7 @@ class Webboard extends CI_Controller
         }
 
         $url = base_url()."Webboard/add_answer?answerno=$item";
+        $url_question = base_url()."Webboard/show_question";
         echo form_open($url);
         echo 'คำตอบ : <br>';
         echo '<textarea cols="40" rows="5" name="a_answer"></textarea><br>';
@@ -151,11 +152,45 @@ class Webboard extends CI_Controller
         echo '<input type="submit" value="ส่งคำตอบ">&nbsp';
         echo '<input type="reset" value="ยกเลิก">';
         echo form_close();
+        echo "<a href='$url_question'> กลับสู่หน้ารวมกระทู้</a>";
     }
 
     public function add_answer ()
     {
-        $item = $this->input->get('answerno', true);
-        echo $item;
+        $answerno = $this->input->get('answerno', true);
+        $a_answer = $this->input->post('a_answer', true);
+        $a_name = $this->input->post('a_name', true);
+
+        $answerno = stripslashes($answerno); 
+        $answerno = htmlspecialchars($answerno, ENT_QUOTES); 
+        $answerno = strip_tags($answerno);
+
+        $a_answer = stripslashes($a_answer); 
+        $a_answer = htmlspecialchars($a_answer, ENT_QUOTES); 
+        $a_answer = strip_tags($a_answer);
+
+        $a_name = stripslashes($a_name); 
+        $a_name = htmlspecialchars($a_name, ENT_QUOTES); 
+        $a_name = strip_tags($a_name);
+
+        
+
+        $insert = $this->webboard->insert_answer($answerno,$a_answer, $a_name);
+        $qcount = $this->webboard->select_qcount($answerno);
+        $url = base_url()."Webboard/show_detail?item=$answerno";
+        $url_home = base_url()."Webboard/show_question";
+
+        if($insert)
+        {
+            $this->webboard->update_question($qcount, $answerno);
+            echo "คำตอบถูกบันทึกลงฐานข้อมูลแล้ว <br><br>";
+            echo "<a href='$url'> กลับไปยังกระทู้ </a><br>";
+            echo "<a href='$url_home'> หน้าหลักของเว็บบอร์ด</a>";
+            
+        }
+        else
+        {
+            echo "ไม่สามารถบันทึกคำตอบลงสู่ฐานข้อมูลได้ กรุณาตรวจสอบ";
+        }
     }
 }

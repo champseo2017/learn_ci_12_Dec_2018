@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2019 at 02:19 AM
+-- Generation Time: Feb 28, 2019 at 02:18 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -34,6 +34,18 @@ CREATE TABLE `answer` (
   `adetail` longtext,
   `aname` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `answer`
+--
+
+INSERT INTO `answer` (`aquestionno`, `ano`, `adetail`, `aname`) VALUES
+(7, 8, 'dffwfds', 'fdsfs'),
+(6, 9, 'fewfwe', 'fewf'),
+(5, 10, 'fewfew', 'fewfewf'),
+(7, 11, 'fewf', 'wefewf'),
+(1, 12, 'มันเยียมมากเลยครับผมล่ะงงเลย', 'คุณนาย'),
+(2, 13, 'ผมก็ไม่รู้เหมือนกัน', 'ดำไดำได');
 
 -- --------------------------------------------------------
 
@@ -180,11 +192,13 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`qno`, `qtopic`, `qdetail`, `qname`, `qcount`) VALUES
-(1, 'กระทู้ที่หนึ่ง', 'กระทู้ที่หนึ่ง', 'แชมป์', 0),
-(2, 'ทำไมโลกถึงกลม', 'สงสัยทำไมโลกถึงกลม', 'แชมป์', 0),
+(1, 'กระทู้ที่หนึ่ง', 'กระทู้ที่หนึ่ง', 'แชมป์', 1),
+(2, 'ทำไมโลกถึงกลม', 'สงสัยทำไมโลกถึงกลม', 'แชมป์', 1),
 (3, 'โลกเกิดไรขึ้น', 'โลกเกิดไรขึ้น', 'แชมป์', 0),
 (4, 'ทดสอบนะครับ5', 'ทดสอบนะครับ5', 'ทดสอบนะครับ5', 0),
-(5, 'fewf', 'fwefwef', 'wefwef', 0);
+(5, 'fewf', 'fwefwef', 'wefwef', 1),
+(6, 'fewfwe', 'fewf', 'wefwe', 1),
+(7, 'fwefwef', 'ewfewf', 'wefwef', 2);
 
 -- --------------------------------------------------------
 
@@ -350,7 +364,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `ano` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ano` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -380,7 +394,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `qno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `qno` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
