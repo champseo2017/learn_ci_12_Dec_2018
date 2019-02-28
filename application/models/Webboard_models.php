@@ -5,18 +5,11 @@ class Webboard_models extends CI_Model {
         parent::__construct();
     }
 
-    public function select_question()
-    {
-        $query = $this->db->get('question')
-                                ->num_rows();
-        return $query;
-    }
-
-    public function insert_question($itemno, $topic, $detail, $name)
+   
+    public function insert_question($topic, $detail, $name)
     {
         $data = array(
 
-            'qno' => $itemno,
             'qtopic' => $topic,
             'qdetail' => $detail,
             'qname' => $name,

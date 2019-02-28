@@ -55,11 +55,8 @@ class Webboard extends CI_Controller
             $name = htmlspecialchars($input['name'], ENT_QUOTES); 
             $name = strip_tags($input['name']);
             
-            $query = $this->webboard->select_question();
             
-            $itemno = $query + 1;
-            
-            $insert = $this->webboard->insert_question($itemno, $topic, $detail, $name);
+            $insert = $this->webboard->insert_question($topic, $detail, $name);
             
             if($insert)
             {
@@ -172,8 +169,6 @@ class Webboard extends CI_Controller
         $a_name = stripslashes($a_name); 
         $a_name = htmlspecialchars($a_name, ENT_QUOTES); 
         $a_name = strip_tags($a_name);
-
-        
 
         $insert = $this->webboard->insert_answer($answerno,$a_answer, $a_name);
         $qcount = $this->webboard->select_qcount($answerno);
