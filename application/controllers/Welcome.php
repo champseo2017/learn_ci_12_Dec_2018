@@ -89,5 +89,8 @@ class Welcome extends CI_Controller {
 		echo '<a href="/Limit_character">Limit_character</a><br/>';
 		echo '<a href="/Thai_date/show_date">Thai_date</a><br/>';
 		echo '<a href="/Webboard">Webboard</a><br/>';
+		echo '<a href="/Html_helper">Html_helper</a><br/>';
+
+		
 	}
 }
