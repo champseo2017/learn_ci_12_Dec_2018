@@ -11,6 +11,13 @@ class Learn_javascript_con extends CI_Controller {
     }
     public function index ()
     {
+        
         $this->load->view('learn_javascript');
+    }
+
+    public function html_v1()
+    {
+        echo $this->input->get('Vol');
+        echo '<p>ggwp</p>';
     }
 }

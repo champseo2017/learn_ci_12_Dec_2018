@@ -7,52 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>Javascript</h1>
-<script>
-// var obj = {
-//     a: 1,
-//     myFunction: function (){
+            <h1>Learn javascript</h1>
+            <!-- 
+                PHP Jump Menu คือส่วนของ HTML การส่งค่าและรับค่าแบบ Jump Menu
+            -->
 
-//         console.log("call myfunction")
+            <script>
+            
 
-//     },
-// };
-// obj.a = 100;
-// console.log(obj.a);
-// console.log(typeof obj.myFunction);
-// obj.myFunction();
+            // การประกาศตัวแปร
+            // ตัวแปรในจาวาสคริปต์จะเหมือนกับภาษาโปรแกรมอื่นๆ โดยมันมีไว้ใช้อ้างอิงหน่วยความจำที่เก็บข้อมูล
+            // เอาไว้ และการประกาศตัวแปร (Variable Declaration) ในจาวาสคริปต์แบบเก่าจะใช้ คีย์เวิร์ด var
 
-// var student = {
-//     "First name": "Somchai",
-//     "Last name": "Jaidee",
-//     "Who are you": function(){
-//         console.log("I' m a student");
-//     },
-//     nickname: "Tom"
-// };
-// var lastName = "Last name"; //เพิ่ม key ของ obj ไว้ในตัวแปรแล้วเรียกใช้งาน
-// console.log(student[lastName]);
+            var x = 100;
 
-// student["Who are you"]();
-// console.log(student.nickname);
-// console.log(student["nickname"]);
-// console.log(student["First name"]);
-
-//เพิ่มพร็อพเพอร์ตี้เข้าไปทีหลัง
-// var obj = {};
-// obj.a = 1; // เพิ่มพร็อพเพอร์ตี้ที่เป็ฯตัวแปร a
-// obj[1] = 100; // เพิ่มพร็อพเพอร์ตี้ที่มีคีย์เป็นตัวเลข 1
-// obj["property name"] = 200; // เพิ่มพร็อพเพอร์ตี้ที่มีคีย์เป็นสตริง "property name"
-// obj.myFunction = function(){ // เพิ่มพร็อมเพอร์ตี้ที่เป็นเมธอด
-//     console.log("hello function");
-// }
-// console.log(obj);
-// console.log(obj.myFunction());
-//ประกาศ key เป็นออบเจ็กต์ว่างจะทำไม่ได้โดยตรง เพราะจะเกิด error แต่ถ้าใช้ key วงเล็บเหลียมเพิ่ม key ออบเจ็กต์เข้าไปทีหลังสามารถทำได้
-var obj = {};
-var key = {}; // เอา key เป็นออบเจ็กต์ว่างจะทำไม่ได้โดยตรงต้องประกาศวงเล็บเหลียม
-obj[key] = 100; // key วงเล็บเหลียมเป็น key ออบเจ็กต์ว่าง
-console.log(obj[key]);
-</script>
+            // ประกาศตัวแปรชื่อว่า x ด้วยการใช้คีย์เวิร์ด var นำหน้า ซึ้งตัวแปร x จะอ้างถึงเลข 100 ที่เก็บอยู่ในหน่วยความจำ
+            
+            </script>
+          
 </body>
 </html>
